@@ -9,6 +9,7 @@ x = 0:1/10000:1;
 t = 0:2/200:2;
 M = Mx(x,L,x0,U,P,W);
 EIy0 = EIy(x,L,x0,U,P,W);
+Vy = V(x,L,x0,U,P,W);
 max(max(abs(EIy0)))
 [T] = meshgrid(0:2/200:2);
 [X] = meshgrid(0:1/200:1);
@@ -16,3 +17,5 @@ Z = X.*exp(-X.^2 - T.^2);
 mesh(x,t,EIy0);
 figure();
 mesh(x,t,M);
+figure();
+mesh(x,t,Vy);
