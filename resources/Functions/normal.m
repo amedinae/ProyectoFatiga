@@ -1,2 +1,2 @@
-function sigma = normal(M,c,Ix)
-    sigma = M*c/Ix
+function sigma = normal(M,r,Ix)
+    sigma = M*r/Ix;
