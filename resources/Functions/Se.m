@@ -1,4 +1,4 @@
-function [S] = Se(Sut,d)
+function [S] = Sf(Sut,d)
     Sf = 0.4*Sut;
     A = 57.7;
     b = -0.718;
