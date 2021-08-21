@@ -11,23 +11,15 @@ t = 0:2/200:2;
 M = Mx(x,L,x0,U,P,W);
 EIy0 = EIy(x,L,x0,U,P,W); % Diseño por rigidez d = 10e-3
 Vy = V(x,L,x0,U,P,W);
-max(max(abs(EIy0)));
+max(max(abs(EIy0)))
 %mesh(x,t,EIy0);
 %figure();
 %mesh(x,t,M);
 %figure();
 %mesh(x,t,Vy);
-%radio viga en metros
-e = 1e-3; %espesor de viga en metros
 
-E = 70e9;
-Sy = 241e6;
-Imin = abs(EIy0)*1000/(E*1e-3);
-Imin = max(max(Imin));%[m^4]
-fun = @(x)momentoInercia(x,e) - Imin;
-rmin = fzero(fun,0.01);
-r = rmin;
-
+r = 25e-3; %radio viga en metros
+e = 10e-3; %espesor de viga en metros
 I = momentoInercia(r,e);
 sigma = normal(M,r,I);
 a = area(r,e);
@@ -49,10 +41,14 @@ sigmaEqui = vonMises(s1,s2,s3);
 alter = alternante(max(sigmaEqui),min(sigmaEqui));
 med = medio(max(sigmaEqui),min(sigmaEqui));
 %figure()
-plot(x,alter);
-figure();
-plot(x,med);
+plot(x,alter)
+figure()
+plot(x,med)
 
-
+E = 70e9;
+Sy = 241e6;
+Imin = abs(EIy0)*1000/(E*1*10e-3);
+Imin = max(max(Imin));%[m^4]
+fun = @(x) 
 
 
