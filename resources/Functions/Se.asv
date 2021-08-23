@@ -1,9 +1,0 @@
-function [C_carga, C_superficie , C_tamano ,C_temperatura, C_confiabilidad] = Se(Se_prima,Sut,d)
-    Sf = 0.4*Sut;
-    A = 57.7;
-    b = -0.718;
-    C_carga
-    C_superficie
-    C_tamano
-    C_temperatura, C_confiabilidad = [1  A*(Sut)^b>=1:1:A*(Sut)^b  1.189*d^(-0.097) 1 0.753]
-    

@@ -4,6 +4,7 @@ P(:,1) = 2*P(:,1);
 W = -1/2*9.81*658/1000*ones(201,1);
 L = 1.6;
 w = 1;
+%x0 = [(L-w)/2 (L)/2 L/2];
 x0 = [(L-w)/2 (w+L)/2 L/2];
 U = solver(L,x0,P,W);
 x = 0:L/10000:L;
@@ -12,8 +13,8 @@ M = Mx(x,L,x0,U,P,W);
 EIy0 = EIy(x,L,x0,U,P,W); % Diseño por rigidez d = 10e-3
 Vy = V(x,L,x0,U,P,W);
 max(max(abs(EIy0)));
-%mesh(x,t,EIy0);
-%figure();
+mesh(x,t,EIy0);
+figure();
 %mesh(x,t,M);
 %figure();
 %mesh(x,t,Vy);
@@ -52,7 +53,10 @@ med = medio(max(sigmaEqui),min(sigmaEqui));
 plot(x,alter);
 figure();
 plot(x,med);
+Sut = 240;
+Sf = Se(Sut, 2*r);
+Sm = max(med)*1000/1000000;
+Sa = max(alter)*1000/1000000;
+k0 = -Sf/Sut*Sm/Sa+Sf/Sa;
 
-
-
-
+FS = 1 + abs(-Sf/Sut*Sm-Sa+Sf)/sqrt(((Sf/Sut)^2+1)*(Sa^2+Sm^2))
